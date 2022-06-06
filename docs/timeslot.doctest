@@ -1,0 +1,21 @@
+>>> from src.daytime import DayTime
+>>> from src.timeslot import Timeslot
+>>> morning = Timeslot(DayTime(6, 0), DayTime(12, 0))
+>>> morning
+06:00-12:00
+>>> afternoon = Timeslot(DayTime(12, 1), DayTime(18, 0))
+>>> afternoon
+12:01-18:00
+>>> employee_timeslot = Timeslot(DayTime(11, 0), DayTime(13, 0))
+>>> employee_timeslot.intersect_with(morning)
+True
+>>> employee_timeslot ^ morning
+11:00-12:00
+>>> employee_timeslot.intersect_with(afternoon)
+True
+>>> employee_timeslot ^ afternoon
+12:01-13:00
+>>> Timeslot.strptime("14:00", "16:00", "%H:%M")
+14:00-16:00
+>>> afternoon ^ morning
+-1
