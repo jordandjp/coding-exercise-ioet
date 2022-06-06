@@ -1,0 +1,42 @@
+>>> from src.daytime import DayTime
+>>> midnight = DayTime(24, 0)
+>>> midnight
+00:00
+>>> morning = DayTime(6, 0)
+>>> morning
+06:00
+>>> noon = DayTime(12, 0)
+>>> noon
+12:00
+>>> afternoon = DayTime(18, 30)
+>>> afternoon
+18:30
+>>> noon < midnight
+True
+>>> afternoon < noon
+False
+>>> afternoon2 = DayTime(18, 45)
+>>> afternoon2 > afternoon
+True
+>>> morning == DayTime(6, 0)
+True
+>>> morning >= DayTime(6, 0)
+True
+>>> DayTime(25, 0)
+Traceback (most recent call last):
+        ...
+ValueError: hour must be in 0..24
+>>> DayTime(5, 63)
+Traceback (most recent call last):
+        ...
+ValueError: minute must be in 0..59
+>>> DayTime(-5, 0)
+Traceback (most recent call last):
+        ...
+ValueError: hour must be in 0..24
+>>> DayTime(24, 0)
+00:00
+>>> DayTime(24, 30)
+Traceback (most recent call last):
+        ...
+ValueError: when hour is 24, minute must be 0
