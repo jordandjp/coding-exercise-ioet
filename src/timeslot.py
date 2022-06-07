@@ -18,6 +18,14 @@ class Timeslot:
     def intersection(self, other: Timeslot) -> bool:
         return self ^ other
 
+    @property
+    def total_hours(self):
+        return (
+            self.end_time.hour
+            - self.start_time.hour
+            + ((self.end_time.minute - self.start_time.minute) / 60)
+        )
+
     @staticmethod
     def strptime(start_time: str, end_time: str, _format: str) -> Timeslot:
         dt_start_time = datetime.strptime(start_time, _format)
