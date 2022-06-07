@@ -75,5 +75,23 @@ class PayTable:
     """An abstraction that represents the information of the payment rate
     per time interval of the days of the week."""
 
+    def __init__(
+        self, timeslots_payrate: List[TimeslotPayRate], currency: str = "USD"
+    ) -> None:
+        self.timeslots_payrate = timeslots_payrate
+        self.currency = currency
+
     def calculate_employee_pay(self, employee_timeslots: EmployeeTimeslots) -> Pay:
         """Calculate the total amount to be paid for the employee's hours worked"""
+        money = Money(0, self.currency)
+        for employee_dts in employee_timeslots.days_timeslot:
+            for timeslot_payrate in self.timeslots_payrate:
+                if (
+                    employee_dts.day == timeslot_payrate.day_timeslot.day
+                    and employee_dts.timeslot.intersect_with(
+                        timeslot_payrate.day_timeslot.timeslot
+                    )
+                ):
+                    ts = employee_dts.timeslot ^ timeslot_payrate.day_timeslot.timeslot
+                    money = money + (ts.total_hours * timeslot_payrate.pay_rate)
+        return Pay(money, employee_timeslots.employee)
