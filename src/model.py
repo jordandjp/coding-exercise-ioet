@@ -41,6 +41,15 @@ class DayTimeslot:
     day: Day
     timeslot: Timeslot
 
+    def intersect_with(self, other: DayTimeslot) -> bool:
+        return self.day == other.day and self.timeslot.intersect_with(other.timeslot)
+
+    def intersection(self, other: DayTimeslot) -> bool:
+        result = -1
+        if self.intersect_with(other):
+            result = DayTimeslot(self.day, self.timeslot ^ other.timeslot)
+        return result
+
 
 @dataclass(frozen=True)
 class TimeslotPayRate:
