@@ -1,7 +1,5 @@
 from io import StringIO
-import sys
 import unittest
-from unittest.mock import patch
 
 from src.handlers import StreamHandler
 
