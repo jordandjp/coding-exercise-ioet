@@ -72,6 +72,9 @@ class Timeslot:
         if self.__within(other):
             result = self
 
+        elif other.__within(self):
+            result = other
+
         elif self.__intersect_with(other):
             if self.start_time <= other.start_time <= self.end_time:
                 result = Timeslot(other.start_time, self.end_time)
