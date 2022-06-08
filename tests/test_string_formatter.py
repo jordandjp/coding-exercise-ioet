@@ -4,7 +4,7 @@ from src.model import Employee, Money, Pay
 from src.formatters import StringFormatter
 
 
-class FormatterTestCase(unittest.TestCase):
+class StringFormatterTestCase(unittest.TestCase):
     def setUp(self):
         self.one_line_formatter = StringFormatter(
             "The amount to pay {obj.employee.name} is: {obj.amount.value} {obj.amount.currency}",
