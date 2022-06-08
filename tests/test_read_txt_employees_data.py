@@ -1,6 +1,5 @@
 import unittest
 
-
 from src.readers import read_txt_employee_data
 
 
