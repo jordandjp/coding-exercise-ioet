@@ -41,10 +41,15 @@ class TimeslotTestCase(unittest.TestCase):
         self.assertEqual(timeslot, Timeslot(DayTime(18, 0), DayTime(22, 0)))
 
     def test_total_hours(self):
-        self.assertEqual(self.morning.total_hours, 6)
-        self.assertEqual(self.afternoon.total_hours, 6 - (1 / 60))
-        self.assertEqual(self.employee_timeslot.total_hours, 2)
-        self.assertEqual(self.employee2_timeslot.total_hours, 1.75)
+        parameters = (
+            (self.morning.total_hours, 6),
+            (self.afternoon.total_hours, 6 - (1 / 60)),
+            (self.employee_timeslot.total_hours, 2),
+            (self.employee2_timeslot.total_hours, 1.75),
+        )
+        for result, expected in parameters:
+            with self.subTest(result=result, expected=expected):
+                self.assertEqual(result, expected)
 
 
 if __name__ == "__main__":
