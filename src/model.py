@@ -10,9 +10,9 @@ from src.timeslot import Timeslot
 
 class Day(Enum):
     MONDAY = calendar.MONDAY
-    THURSDAY = calendar.THURSDAY
-    WEDNESDAY = calendar.WEDNESDAY
     TUESDAY = calendar.TUESDAY
+    WEDNESDAY = calendar.WEDNESDAY
+    THURSDAY = calendar.THURSDAY
     FRIDAY = calendar.FRIDAY
     SATURDAY = calendar.SATURDAY
     SUNDAY = calendar.SUNDAY
