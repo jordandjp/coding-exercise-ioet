@@ -32,6 +32,12 @@ class TimeslotTestCase(unittest.TestCase):
             Timeslot(DayTime(14, 0), DayTime(15, 15)),
         )
 
+    def test_intersection_same_start_time(self):
+        timeslot1 = Timeslot.strptime("00:01", "18:00")
+        timeslot2 = Timeslot.strptime("00:01", "09:00")
+        self.assertEqual(timeslot1.intersection(timeslot2), timeslot2)
+        self.assertEqual(timeslot2.intersection(timeslot1), timeslot2)
+
     def test_validate_range_within_day(self):
         with self.assertRaises(ValueError):
             Timeslot.strptime("23:00", "01:00")
