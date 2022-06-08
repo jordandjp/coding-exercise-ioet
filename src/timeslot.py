@@ -9,13 +9,16 @@ class Timeslot:
     """Abstraction that represent a time interval within a day."""
 
     def __init__(self, start_time: DayTime, end_time: DayTime) -> None:
+        if start_time > end_time:
+            raise ValueError("End time must be greater that start time")
+
         self.start_time = start_time
         self.end_time = end_time
 
     def intersect_with(self, other: Timeslot) -> bool:
         return self.__intersect_with(other)
 
-    def intersection(self, other: Timeslot) -> bool:
+    def intersection(self, other: Timeslot) -> Timeslot | int:
         return self ^ other
 
     @property
@@ -61,7 +64,7 @@ class Timeslot:
     def __eq__(self, other: Timeslot) -> str:
         return self.start_time == other.start_time and self.end_time == other.end_time
 
-    def __xor__(self, other: Timeslot) -> bool:
+    def __xor__(self, other: Timeslot) -> Timeslot | int:
         if not isinstance(other, Timeslot):
             raise TypeError(
                 f"unsupported operand type(s) for ^: {other.__class__.__name__} and {self.__class__.__name__}"
