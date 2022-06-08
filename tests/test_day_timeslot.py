@@ -1,7 +1,7 @@
 import unittest
 
-from src.timeslot import Timeslot
 from src.model import Day, DayTimeslot
+from src.timeslot import Timeslot
 
 
 class DayTimeslotTestCase(unittest.TestCase):

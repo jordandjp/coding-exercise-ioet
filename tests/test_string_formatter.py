@@ -1,7 +1,7 @@
 import unittest
-from src.model import Employee, Money, Pay
 
 from src.formatters import StringFormatter
+from src.model import Employee, Money, Pay
 
 
 class StringFormatterTestCase(unittest.TestCase):

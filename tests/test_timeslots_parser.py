@@ -1,8 +1,8 @@
 import unittest
 
-from src.model import Day, Employee, EmployeeTimeslots, DayTimeslot
-from src.timeslot_parser import SimpleTimeslotParser
+from src.model import Day, DayTimeslot, Employee, EmployeeTimeslots
 from src.timeslot import Timeslot
+from src.timeslot_parser import SimpleTimeslotParser
 
 
 def create_employee_timeslots(name: str, days_timeslots: list):
