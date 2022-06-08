@@ -34,7 +34,7 @@ class DayTimeslotTestCase(unittest.TestCase):
             self.friday_employee_day_timeslot.intersection(
                 self.friday_afternoon_day_timeslot
             ),
-            DayTimeslot(Day.FRIDAY, Timeslot.strptime("12:00", "16:00")),
+            DayTimeslot(Day.FRIDAY, Timeslot.strptime("12:01", "16:00")),
         )
 
     def test_different_days_intersection(self):
