@@ -32,6 +32,10 @@ class TimeslotTestCase(unittest.TestCase):
             Timeslot(DayTime(14, 0), DayTime(15, 15)),
         )
 
+    def test_validate_range_within_day(self):
+        with self.assertRaises(ValueError):
+            Timeslot.strptime("23:00", "01:00")
+
     def test_timeslot_strptime(self):
         timeslot = Timeslot.strptime("18:00", "22:00", "%H:%M")
         self.assertEqual(timeslot, Timeslot(DayTime(18, 0), DayTime(22, 0)))
