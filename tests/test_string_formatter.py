@@ -7,15 +7,13 @@ from src.model import Employee, Money, Pay
 class StringFormatterTestCase(unittest.TestCase):
     def setUp(self):
         self.one_line_formatter = StringFormatter(
-            "The amount to pay {obj.employee.name} is: {obj.amount.value} {obj.amount.currency}",
-            "obj",
+            "The amount to pay {0.employee.name} is: {0.amount.value} {0.amount.currency}",
         )
         self.multi_line_formatter = StringFormatter(
             "Payment:\n"
-            "\tName: {pay.employee.name}\n"
-            "\tAmount: {pay.amount.value}\n"
-            "\tCurrency: {pay.amount.currency}\n",
-            "pay",
+            "\tName: {0.employee.name}\n"
+            "\tAmount: {0.amount.value}\n"
+            "\tCurrency: {0.amount.currency}\n",
         )
         self.rene_pay = Pay(Money(35, "USD"), Employee("RENE"))
         self.bob_pay = Pay(Money(30, "GBP"), Employee("Bob"))

@@ -12,9 +12,8 @@ class Formatter(abc.ABC):
 class StringFormatter(Formatter):
     """Abstraction to format the output message with a given template"""
 
-    def __init__(self, message_template, obj_keyword: str = "pay") -> None:
+    def __init__(self, message_template) -> None:
         self.message_template = message_template
-        self.obj_keyword = obj_keyword
 
     def format(self, pay: Pay) -> str:
-        return self.message_template.format_map({self.obj_keyword: pay})
+        return self.message_template.format(pay)
