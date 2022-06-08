@@ -64,8 +64,7 @@ class PayTableTestCase(unittest.TestCase):
     def test_calculate_single_timeslot_pay(self):
         self.assertEqual(
             self.pay_table.calculate_single_timeslot_pay(
-                self.bob_employee_timeslots.days_timeslot[0],
-                self.bob_employee
+                self.bob_employee_timeslots.days_timeslot[0], self.bob_employee
             ),
             model.Pay(model.Money(20), self.bob_employee),
         )
@@ -75,7 +74,3 @@ class PayTableTestCase(unittest.TestCase):
             self.pay_table.calculate_employee_pay(self.peter_employee_timeslots),
             model.Pay(model.Money((20 * (4.5 - 1 / 60)) + 20), self.peter_employee),
         )
-
-
-if __name__ == "__main__":
-    unittest.main()

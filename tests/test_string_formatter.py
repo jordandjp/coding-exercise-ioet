@@ -31,7 +31,3 @@ class StringFormatterTestCase(unittest.TestCase):
             self.multi_line_formatter.format(self.bob_pay),
             "Payment:\n\tName: Bob\n\tAmount: 30\n\tCurrency: GBP\n",
         )
-
-
-if __name__ == "__main__":
-    unittest.main()

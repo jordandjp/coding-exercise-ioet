@@ -63,7 +63,3 @@ class SimpleTimeslotParserTestCase(unittest.TestCase):
             self.employee_timeslots_created.employee,
             self.employee_timeslots_parsed.employee,
         )
-
-
-if __name__ == "__main__":
-    unittest.main()

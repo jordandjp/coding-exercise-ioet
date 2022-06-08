@@ -16,7 +16,3 @@ class MoneyTestCase(unittest.TestCase):
 
     def test_can_multiply_a_number_by_money(self):
         self.assertEqual(2 * self.fiver, self.tenner)
-
-
-if __name__ == "__main__":
-    unittest.main()

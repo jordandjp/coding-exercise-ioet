@@ -7,6 +7,7 @@ from src.timeslot import Timeslot
 
 
 def load_csv_table(file: Union[str, bytes, PathLike]) -> PayTable:
+    """Read a comma-separated values (csv) file into PayTable"""
 
     day_map = {
         "MO": Day.MONDAY,

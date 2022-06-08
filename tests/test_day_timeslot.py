@@ -42,7 +42,3 @@ class DayTimeslotTestCase(unittest.TestCase):
         self.assertEqual(
             self.monday_morning_day_timeslot.intersection(sunday_morning), -1
         )
-
-
-if __name__ == "__main__":
-    unittest.main()

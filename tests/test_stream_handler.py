@@ -21,7 +21,3 @@ class StreamHandlerTestCase(unittest.TestCase):
         self.assertMultiLineEqual(
             self.handler.file.getvalue(), "The amount to pay ASTRID is: 85 USD\n"
         )
-
-
-if __name__ == "__main__":
-    unittest.main()

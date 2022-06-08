@@ -34,7 +34,3 @@ class DayTimeTestCase(unittest.TestCase):
     def test_negative_values(self):
         with self.assertRaises(ValueError):
             DayTime(-5, -3)
-
-
-if __name__ == "__main__":
-    unittest.main()

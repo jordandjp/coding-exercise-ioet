@@ -21,7 +21,3 @@ class ReadTxtEmployeeDataTestCase(unittest.TestCase):
         for line in self.raw_data:
             with self.subTest(line=line):
                 self.assertFalse("\n" in line)
-
-
-if __name__ == "__main__":
-    unittest.main()

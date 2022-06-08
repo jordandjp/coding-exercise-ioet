@@ -26,7 +26,7 @@ def create_acme_pay_table():
 class LoadTableTestCase(unittest.TestCase):
     def setUp(self):
         self.maxDiff = None
-        self.acme_table = load_csv_table("data/ACME_TABLE.csv")
+        self.acme_table = load_csv_table("tests/data/test_table_data.csv")
 
     def test_instance_load_csv_table(self):
         self.assertIsInstance(self.acme_table, PayTable)
@@ -36,7 +36,3 @@ class LoadTableTestCase(unittest.TestCase):
         self.assertListEqual(
             self.acme_table.timeslots_pay_rate, created_acme_table.timeslots_pay_rate
         )
-
-
-if __name__ == "__main__":
-    unittest.main()
