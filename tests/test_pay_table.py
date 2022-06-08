@@ -43,7 +43,7 @@ class PayTableTestCase(unittest.TestCase):
                     model.Day.FRIDAY, Timeslot.strptime("10:00", "13:30", "%H:%M")
                 ),
                 model.DayTimeslot(
-                    model.Day.SATURDAY, Timeslot.strptime("23:00", "01:00", "%H:%M")
+                    model.Day.SATURDAY, Timeslot.strptime("23:00", "00:00", "%H:%M")
                 ),
             ],
         )
@@ -56,21 +56,24 @@ class PayTableTestCase(unittest.TestCase):
 
     def test_empty_employee_timeslots(self):
         empty_employee_timeslots = model.EmployeeTimeslots(self.bob_employee, [])
-        self.assertTrue(
+        self.assertEqual(
             self.pay_table.calculate_employee_pay(empty_employee_timeslots),
-            model.Pay(0, self.bob_employee),
+            model.Pay(model.Money(0), self.bob_employee),
         )
 
-    def test_total_pay_single_timeslot(self):
-        self.assertTrue(
-            self.pay_table.calculate_employee_pay(self.bob_employee_timeslots),
-            model.Pay(20, self.bob_employee),
+    def test_calculate_single_timeslot_pay(self):
+        self.assertEqual(
+            self.pay_table.calculate_single_timeslot_pay(
+                self.bob_employee_timeslots.days_timeslot[0],
+                self.bob_employee
+            ),
+            model.Pay(model.Money(20), self.bob_employee),
         )
 
     def test_total_pay_multiple_timeslot(self):
-        self.assertTrue(
+        self.assertEqual(
             self.pay_table.calculate_employee_pay(self.peter_employee_timeslots),
-            model.Pay(119.5, self.peter_employee),
+            model.Pay(model.Money((20 * (4.5 - 1 / 60)) + 20), self.peter_employee),
         )
 
 
