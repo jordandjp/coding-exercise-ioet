@@ -4,8 +4,9 @@ from src.model import Money
 
 
 class MoneyTestCase(unittest.TestCase):
-    fiver = Money(5, "USD")
-    tenner = Money(10, "USD")
+    def setUp(self):
+        self.fiver = Money(5, "USD")
+        self.tenner = Money(10, "USD")
 
     def test_can_add_money_same_currency(self):
         self.assertEqual(self.fiver + self.fiver, self.tenner)
