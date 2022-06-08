@@ -27,7 +27,7 @@ class Timeslot:
         )
 
     @staticmethod
-    def strptime(start_time: str, end_time: str, _format: str) -> Timeslot:
+    def strptime(start_time: str, end_time: str, _format: str = "%H:%M") -> Timeslot:
         dt_start_time = datetime.strptime(start_time, _format)
         dt_end_time = datetime.strptime(end_time, _format)
         start_time = DayTime(
