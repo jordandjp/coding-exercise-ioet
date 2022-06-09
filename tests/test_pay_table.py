@@ -24,7 +24,7 @@ class PayTableTestCase(unittest.TestCase):
     def setUp(self):
         self.pay_table = create_complete_pay_table()
         self.bob_employee = model.Employee("Bob")
-        self.bob_employee_timeslots = model.EmployeeTimeslots(
+        self.bob_employee_timeslots = model.EmployeeSchedule(
             self.bob_employee,
             [
                 model.DayTimeslot(
@@ -33,7 +33,7 @@ class PayTableTestCase(unittest.TestCase):
             ],
         )
         self.peter_employee = model.Employee("Peter")
-        self.peter_employee_timeslots = model.EmployeeTimeslots(
+        self.peter_employee_timeslots = model.EmployeeSchedule(
             self.peter_employee,
             [
                 model.DayTimeslot(
@@ -55,7 +55,7 @@ class PayTableTestCase(unittest.TestCase):
         )
 
     def test_empty_employee_timeslots(self):
-        empty_employee_timeslots = model.EmployeeTimeslots(self.bob_employee, [])
+        empty_employee_timeslots = model.EmployeeSchedule(self.bob_employee, [])
         self.assertEqual(
             self.pay_table.calculate_employee_pay(empty_employee_timeslots),
             model.Pay(model.Money(0), self.bob_employee),

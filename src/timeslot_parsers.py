@@ -1,12 +1,12 @@
 import abc
 
-from src.model import Day, DayTimeslot, Employee, EmployeeTimeslots
+from src.model import Day, DayTimeslot, Employee, EmployeeSchedule
 from src.timeslot import Timeslot
 
 
 class TimeslotParser(abc.ABC):
     @abc.abstractmethod
-    def parse(self, string: str) -> EmployeeTimeslots:
+    def parse(self, string: str) -> EmployeeSchedule:
         ...
 
 
@@ -52,12 +52,12 @@ class SimpleTimeslotParser(TimeslotParser):
         self.times_sep = times_sep
         self.timeslot_format = timeslot_format
 
-    def parse(self, string: str) -> EmployeeTimeslots:
+    def parse(self, string: str) -> EmployeeSchedule:
 
         name, string = string.split(self.name_sep)
         days_timeslot = string.split(self.timeslots_sep)
 
-        return EmployeeTimeslots(
+        return EmployeeSchedule(
             Employee(name), [self.parse_day_timeslot(ts) for ts in days_timeslot]
         )
 

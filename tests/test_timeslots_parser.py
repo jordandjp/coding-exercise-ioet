@@ -1,6 +1,6 @@
 import unittest
 
-from src.model import Day, DayTimeslot, Employee, EmployeeTimeslots
+from src.model import Day, DayTimeslot, Employee, EmployeeSchedule
 from src.timeslot import Timeslot
 from src.timeslot_parsers import SimpleTimeslotParser
 
@@ -12,7 +12,7 @@ def create_employee_timeslots(name: str, days_timeslots: list):
         for day, start_time, end_time, format_time in days_timeslots
     ]
 
-    return EmployeeTimeslots(employee, days_timeslots)
+    return EmployeeSchedule(employee, days_timeslots)
 
 
 class SimpleTimeslotParserTestCase(unittest.TestCase):
@@ -42,7 +42,7 @@ class SimpleTimeslotParserTestCase(unittest.TestCase):
 
     def test_parse_type_return(self):
         self.assertIsInstance(
-            self.timeslot_parser.parse(self.timeslot_entry), EmployeeTimeslots
+            self.timeslot_parser.parse(self.timeslot_entry), EmployeeSchedule
         )
 
     def test_parse_valid_string(self):

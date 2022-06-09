@@ -36,7 +36,7 @@ class Employee:
 
 
 @dataclass(frozen=True)
-class EmployeeTimeslots:
+class EmployeeSchedule:
     employee: Employee
     days_timeslot: List[DayTimeslot]
 
@@ -90,7 +90,7 @@ class PayTable:
         self.timeslots_pay_rate = timeslots_pay_rate
         self.currency = currency
 
-    def calculate_employee_pay(self, employee_timeslots: EmployeeTimeslots) -> Pay:
+    def calculate_employee_pay(self, employee_timeslots: EmployeeSchedule) -> Pay:
         """Calculate the total amount to be paid for the employee's hours worked"""
         money = Money(0, self.currency)
 
