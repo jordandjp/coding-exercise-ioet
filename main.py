@@ -6,7 +6,7 @@ from src.functions import issue_payment
 from src.handlers import StreamHandler
 from src.load_table import load_csv_table
 from src.readers import read_txt_employee_data
-from src.timeslot_parser import SimpleTimeslotParser
+from src.timeslot_parsers import SimpleTimeslotParser
 
 
 def parse_args() -> argparse.ArgumentParser:

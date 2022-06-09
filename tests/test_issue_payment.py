@@ -4,7 +4,7 @@ from io import StringIO
 from src.formatters import StringFormatter
 from src.functions import issue_payment
 from src.handlers import StreamHandler
-from src.timeslot_parser import SimpleTimeslotParser
+from src.timeslot_parsers import SimpleTimeslotParser
 from tests.fixtures import create_pay_table
 
 

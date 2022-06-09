@@ -3,7 +3,7 @@ from typing import List
 from src.formatters import Formatter
 from src.handlers import Handler
 from src.model import PayTable
-from src.timeslot_parser import TimeslotParser
+from src.timeslot_parsers import TimeslotParser
 
 
 def issue_payment(
