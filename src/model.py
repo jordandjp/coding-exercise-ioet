@@ -19,6 +19,35 @@ class Day(Enum):
 
 
 @dataclass(frozen=True)
+class TimeslotPayRate:
+    day_timeslot: DayTimeslot
+    hourly_rate: Money
+
+
+@dataclass(frozen=True)
+class TimeslotPayRate:
+    day_timeslot: DayTimeslot
+    pay_rate: Money
+
+
+@dataclass(frozen=True)
+class Employee:
+    name: str
+
+
+@dataclass(frozen=True)
+class EmployeeTimeslots:
+    employee: Employee
+    days_timeslot: List[DayTimeslot]
+
+
+@dataclass(frozen=True)
+class Pay:
+    amount: Money
+    employee: Employee
+
+
+@dataclass(frozen=True)
 class Money:
     value: int
     currency: str = "USD"
@@ -49,35 +78,6 @@ class DayTimeslot:
         if self.intersect_with(other):
             result = DayTimeslot(self.day, self.timeslot ^ other.timeslot)
         return result
-
-
-@dataclass(frozen=True)
-class TimeslotPayRate:
-    day_timeslot: DayTimeslot
-    hourly_rate: Money
-
-
-@dataclass(frozen=True)
-class TimeslotPayRate:
-    day_timeslot: DayTimeslot
-    pay_rate: Money
-
-
-@dataclass(frozen=True)
-class Employee:
-    name: str
-
-
-@dataclass(frozen=True)
-class EmployeeTimeslots:
-    employee: Employee
-    days_timeslot: List[DayTimeslot]
-
-
-@dataclass(frozen=True)
-class Pay:
-    amount: Money
-    employee: Employee
 
 
 class PayTable:
