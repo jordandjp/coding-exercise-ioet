@@ -6,7 +6,12 @@ from src.daytime import DayTime
 
 
 class Timeslot:
-    """Abstraction that represent a time interval within a day."""
+    """Abstraction that represent a time interval within a day.
+
+    Not all time intervals are valid. Timeslot represents the intervals
+    within the same day, and intervals that covers two days are not valid.
+    Therefore, it is not possible for the end time to be less than the start time.
+    """
 
     def __init__(self, start_time: DayTime, end_time: DayTime) -> None:
         if start_time > end_time:
@@ -16,9 +21,11 @@ class Timeslot:
         self.end_time = end_time
 
     def intersect_with(self, other: Timeslot) -> bool:
+        """Check if two timeslots overlaps."""
         return self.__intersect_with(other)
 
     def intersection(self, other: Timeslot) -> Timeslot | int:
+        """Returns a time range with overlapping times in both time ranges."""
         return self ^ other
 
     @property
@@ -30,9 +37,11 @@ class Timeslot:
         )
 
     @staticmethod
-    def strptime(start_time: str, end_time: str, _format: str = "%H:%M") -> Timeslot:
-        dt_start_time = datetime.strptime(start_time, _format)
-        dt_end_time = datetime.strptime(end_time, _format)
+    def strptime(start_time: str, end_time: str, format_: str = "%H:%M") -> Timeslot:
+        """A convenient and powerful way of creating Timeslot instances by
+        taking advantage of the datetime.strptime method."""
+        dt_start_time = datetime.strptime(start_time, format_)
+        dt_end_time = datetime.strptime(end_time, format_)
         start_time = DayTime(
             hour=dt_start_time.hour,
             minute=dt_start_time.minute,
@@ -52,7 +61,7 @@ class Timeslot:
         )
 
     def __within(self, other: Timeslot) -> bool:
-        """This timeslot is within the range of the other timeslot"""
+        """This timeslot is within the range of the other timeslot."""
         return (
             other.start_time <= self.start_time <= other.end_time
             and other.start_time <= self.end_time <= other.end_time

@@ -3,7 +3,10 @@ from dataclasses import dataclass
 
 @dataclass(order=True)
 class DayTime:
-    """Abstraction that represents a time of the day in terms of hour and minute."""
+    """Abstraction that represents a time of the day in terms of hour and minute.
+
+    00:01 is considered the first minute of the day and 00:00 the last one. Therefore
+    00:00 < 00:01 is false."""
 
     hour: int
     minute: int

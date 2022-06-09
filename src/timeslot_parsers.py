@@ -11,6 +11,22 @@ class TimeslotParser(abc.ABC):
 
 
 class SimpleTimeslotParser(TimeslotParser):
+    """
+    spec        ::=       [name][[name_sep][day][start_time][times_sep][end_time][timeslots_sep]]
+
+    name: <Any string>
+    start_time, end_time: <Any string> that can be parsed by datetime.strptime
+    day: <Any string> that represent a day of the week
+
+    # Instance attributes
+    name_sep: <Any token> that separates the name with the timeslots
+    times_sep: <Any token> that separates the time start and the end time of the timeslots
+    timeslots_sep: <Any token> that separates the timeslots
+
+    day_slice: <Slice> that represents the start and final position of the day
+    timeslot_format: <format> using the respective directives for hour and minute
+
+    """
 
     day_map = {
         "MO": Day.MONDAY,
